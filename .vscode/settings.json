@@ -1,0 +1,18 @@
+{
+  "workbench.colorTheme": "Bearded Theme Vivid Purple",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "iA Writer Mono S",
+  "editor.fontSize": 15,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.accessibilitySupport": "off",
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": false,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "material-icon-theme.activeIconPack": "nest",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
