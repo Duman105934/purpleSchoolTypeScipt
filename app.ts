@@ -1,27 +1,32 @@
-const skills: string[] = ['Dev', 'DevOps', 'Testing'];
+// var 1: fiksirovannaya dlinna
 
-for (const skill of skills) {
-  console.log(skill.toUpperCase());
-}
+// const skill: [number, string] = [1, 'Dev'];
+// const id = skill[0];
+// const skillName = skill[1];
 
-const resultat = skills
-  .filter((s: string) => s !== 'DevOps')
-  .map((s) => s + '! ')
-  .reduce((a, b) => a + b);
+// console.log(skill);
 
-console.log(resultat);
+// const result = skill.push('dobavit v tuples kakoito dop tekst');
+// console.log(result);
 
-// const skills: string[] = ['Dev', 'DevOps', 'Testing'];
+// const result_2 = skill.pop();
+// console.log(result_2);
 
-// for (const skill of skills) {
-//   console.log(skill.toUpperCase());
-// }
+// arr.pop
 
-// const resultat = skills
-//   .filter((s: string) => s !== 'DevOps')
-//   .map((s) => {
-//     return 1;
-//   })
-//   .reduce((a, b) => a + b);
+// var myFish = ['ангел', 'клоун', 'мандарин', 'хирург'];
+// console.log(myFish); // ['ангел', 'клоун', 'мандарин', 'хирург']
 
-// console.log(resultat);
+// var popped = myFish.pop();
+
+// console.log(myFish); // ['ангел', 'клоун', 'мандарин']
+// console.log(popped); // 'хирург'
+
+// destructurizaciya
+
+const skill: [number, string] = [1, 'Dev'];
+const [id, skillName] = skill;
+
+// var 2: spred operator
+
+const array: [number, string, ...boolean[]] = [1, 'text', true, true, false];
