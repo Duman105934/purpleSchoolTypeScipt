@@ -2,8 +2,6 @@ function getFullNameArrow(userEntity: {
   firstName: string;
   surName: string;
 }): string {
-  //   userEntity.firstName;
-  //   userEntity.surName;
   return `${userEntity.firstName} ${userEntity.surName}`;
 }
 
@@ -17,12 +15,5 @@ const user = {
     devOps: false,
   },
 };
-
-// user.firstName,
-// user.surName,
-// user.age,
-// user.city,
-// user.scils.dev
-// user.scils.devOps
 
 console.log(getFullNameArrow(user));
