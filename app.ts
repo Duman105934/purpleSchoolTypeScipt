@@ -1,32 +1,11 @@
-// var 1: fiksirovannaya dlinna
+// var 1: koroti variant zapisi readonly
 
-// const skill: [number, string] = [1, 'Dev'];
-// const id = skill[0];
-// const skillName = skill[1];
+const skill: readonly [number, string] = [1, 'Dev']; // kombinaciya tipov
+// const skils: readonly string[] = ['Dev', 'DevOps']; // odinarny tip, esli odinarny tip pishetsya vne skobok
+//skils[0] = '' // nelzya izmenit esli readonly
+//skils.push('novoe znachenie') // nelzya dobavit esli readonly
 
-// console.log(skill);
+// var 2: dop variant
 
-// const result = skill.push('dobavit v tuples kakoito dop tekst');
-// console.log(result);
-
-// const result_2 = skill.pop();
-// console.log(result_2);
-
-// arr.pop
-
-// var myFish = ['ангел', 'клоун', 'мандарин', 'хирург'];
-// console.log(myFish); // ['ангел', 'клоун', 'мандарин', 'хирург']
-
-// var popped = myFish.pop();
-
-// console.log(myFish); // ['ангел', 'клоун', 'мандарин']
-// console.log(popped); // 'хирург'
-
-// destructurizaciya
-
-const skill: [number, string] = [1, 'Dev'];
-const [id, skillName] = skill;
-
-// var 2: spred operator
-
-const array: [number, string, ...boolean[]] = [1, 'text', true, true, false];
+const skils: ReadonlyArray<string> = ['Dev', 'DevOps']; // kak generic
+//const skils: Array<string> = ['Dev', 'DevOps']; // generic
