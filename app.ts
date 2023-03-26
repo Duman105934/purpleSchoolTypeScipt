@@ -1,12 +1,28 @@
-const getFullNameArrow = (firstName: string, surName: string): string => {
-  return `${firstName} ${surName}`;
+function getFullNameArrow(userEntity: {
+  firstName: string;
+  surName: string;
+}): string {
+  //   userEntity.firstName;
+  //   userEntity.surName;
+  return `${userEntity.firstName} ${userEntity.surName}`;
+}
+
+const user = {
+  firstName: 'Duman',
+  surName: 'Makulbekov',
+  city: 'Almaty',
+  age: 35,
+  scils: {
+    dev: false,
+    devOps: false,
+  },
 };
 
-// function getFullName(firstName, surName) {
-//   if (typeof firstName !== 'string') {
-//     throw new Error('!!!!');
-//   }
-//   return `${firstName} ${surName}`;
-// }
+// user.firstName,
+// user.surName,
+// user.age,
+// user.city,
+// user.scils.dev
+// user.scils.devOps
 
-console.log(getFullNameArrow('Duman', 'Makulbekov'));
+console.log(getFullNameArrow(user));
