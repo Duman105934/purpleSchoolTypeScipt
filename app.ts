@@ -1,19 +1,27 @@
-function getFullNameArrow(userEntity: {
-  firstName: string;
-  surName: string;
-}): string {
-  return `${userEntity.firstName} ${userEntity.surName}`;
+const skills: string[] = ['Dev', 'DevOps', 'Testing'];
+
+for (const skill of skills) {
+  console.log(skill.toUpperCase());
 }
 
-const user = {
-  firstName: 'Duman',
-  surName: 'Makulbekov',
-  city: 'Almaty',
-  age: 35,
-  scils: {
-    dev: false,
-    devOps: false,
-  },
-};
+const resultat = skills
+  .filter((s: string) => s !== 'DevOps')
+  .map((s) => s + '! ')
+  .reduce((a, b) => a + b);
 
-console.log(getFullNameArrow(user));
+console.log(resultat);
+
+// const skills: string[] = ['Dev', 'DevOps', 'Testing'];
+
+// for (const skill of skills) {
+//   console.log(skill.toUpperCase());
+// }
+
+// const resultat = skills
+//   .filter((s: string) => s !== 'DevOps')
+//   .map((s) => {
+//     return 1;
+//   })
+//   .reduce((a, b) => a + b);
+
+// console.log(resultat);
