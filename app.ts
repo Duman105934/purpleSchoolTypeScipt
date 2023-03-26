@@ -1,43 +1,46 @@
-// var 1: obychnie type
-function logId(id: string | number | boolean) {
-  // runtime proverka - suzhenie type-ov
-  if (typeof id === 'string') {
-    console.log(id); // string
-  } else if (typeof id === 'number') {
-    console.log(id); // number
-  } else {
-    console.log(id); // boolian
-  }
-}
+// Literalny type dannih
+function fethWithAuth(url: string, method: 'post' | 'get') {}
+fethWithAuth('some url', 'get'); // method mozhno peedat tolko 'post' | 'get'
+// analog literalnyh typov
 
-// var 2: stroka i massiv
-function logError(err: string | string[]) {
-  // runtime proverka - suzhenie type-ov
-  if (Array.isArray(err)) {
-    console.log(err); // strokovy massiv
-  } else {
-    console.log(err); // stroka
-  }
-}
+// enum RequestType {
+// 	GET = 'get',
+// 	POST = 'post'
+// }
 
-// var 3.1: object s odinakovimy type
-function logObject(obj: { a: number } | { b: number }) {
-  // runtime proverka - suzhenie type-ov obectov
-  if ('a' in obj) {
-    console.log(obj.a); // esli a est v obj
-  } else {
-    console.log(obj.b); //
-  }
-}
+// function fethWithAuth(url: string, method: RequestType) {
+// };
 
-// var 3.2: object s multy type
-function logMultipleIds(a: string | number, b: string | boolean) {
-  // runtime proverka - suzhenie type-ov multy obectov
-  if (a === b) {
-  } else {
-  }
+// Vozvroshaemy Literalny type dannih
+function fethWithAuth_2(url: string, method: 'post' | 'get'): 1 | -1 {
+  return 1; // mozhno vernut tolko 1 ili -1
 }
+fethWithAuth('some url', 'get'); // method mozhno peedat tolko 'post' | 'get'
 
-// dopolnitelny vid
-let a: 1 = 1; // prisvoenie type '1'
-// a = 2 // nelzya prisvoit 2 k 'a' s type '1'
+// Privedenie let k konst
+let a: 'some text' = 'some text';
+//a = 'eny text'
+// mozhno prisvoit tolko 'some text' tak kak eto znachenie prisvoen kak type
+// po etomu a = 'eny text' ne srabotaet
+
+//----------------------------------------------------------------------------
+
+function fethWithAuth_3(url: string, some_method: 'post' | 'get') {}
+fethWithAuth('some url', 'post');
+
+let some_method = 'post';
+//fethWithAuth('some url', some_method); // comment chtoby sdelat tsc
+/*
+prisvoit method vmesto 'post' tak kak u nego vyshe prisvoeno 'post' 
+nelzya tak kak u nego klass 'string' a ne 'post' (primer s a: 1 = 1)
+*/
+
+// obhodnoe reshenie: var 1
+//const some_method = 'post'; // let zamenit na const
+
+// obhodnoe reshenie: var 2
+//fethWithAuth('some url', some_method as 'post'); // costanut cherez 'as'
+
+/*
+s cast 'as' nado byt akuratnee tak kak vmesto 'post' mozhno peredat chto to drugoe togozhe type
+*/
