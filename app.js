@@ -1,7 +1,11 @@
 "use strict";
-let revenue = 1000;
-let bonus = 500;
-let a = 'test';
-let b = true;
-let res = revenue + bonus;
-console.log(res);
+const getFullNameArrow = (firstName, surName) => {
+    return `${firstName} ${surName}`;
+};
+// function getFullName(firstName, surName) {
+//   if (typeof firstName !== 'string') {
+//     throw new Error('!!!!');
+//   }
+//   return `${firstName} ${surName}`;
+// }
+console.log(getFullNameArrow('Duman', 'Makulbekov'));
