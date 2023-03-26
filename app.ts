@@ -1,45 +1,43 @@
-// moi variant
-
-// async function getFaqs(req): Promise<{
-// 	question: string;
-// 	answer: string,
-// 	tags: string[],
-// 	likes: number,
-// 	status: string > {
-//   const res = await fetch('/faqs', {
-//     method: 'POST',
-//     body: JSON.stringify(req),
-//   });
-//   const data = await res.json();
-//   return data;
-// }
-
-// pravilny variant
-
-enum QuestionStatus {
-  PUBLISHED = 'published',
-  DRAFT = 'draft',
-  DELETED = 'deleted',
+// var 1: obychnie type
+function logId(id: string | number | boolean) {
+  // runtime proverka - suzhenie type-ov
+  if (typeof id === 'string') {
+    console.log(id); // string
+  } else if (typeof id === 'number') {
+    console.log(id); // number
+  } else {
+    console.log(id); // boolian
+  }
 }
 
-async function getFaqs(req: {
-  // zapros
-  topicId: number;
-  status?: QuestionStatus; // optional - mozhet byt mozhet i ne byt
-}): Promise<
-  {
-    // otvet
-    question: string;
-    answer: string;
-    tags: string[];
-    likes: number;
-    status: QuestionStatus;
-  }[]
-> {
-  const res = await fetch('/faqs', {
-    method: 'POST',
-    body: JSON.stringify(req),
-  });
-  const data = await res.json();
-  return data;
+// var 2: stroka i massiv
+function logError(err: string | string[]) {
+  // runtime proverka - suzhenie type-ov
+  if (Array.isArray(err)) {
+    console.log(err); // strokovy massiv
+  } else {
+    console.log(err); // stroka
+  }
 }
+
+// var 3.1: object s odinakovimy type
+function logObject(obj: { a: number } | { b: number }) {
+  // runtime proverka - suzhenie type-ov obectov
+  if ('a' in obj) {
+    console.log(obj.a); // esli a est v obj
+  } else {
+    console.log(obj.b); //
+  }
+}
+
+// var 3.2: object s multy type
+function logMultipleIds(a: string | number, b: string | boolean) {
+  // runtime proverka - suzhenie type-ov multy obectov
+  if (a === b) {
+  } else {
+  }
+}
+
+// dopolnitelny vid
+let a: 1 = 1; // prisvoenie type '1'
+// a = 2 // nelzya prisvoit 2 k 'a' s type '1'
