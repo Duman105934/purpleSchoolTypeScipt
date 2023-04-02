@@ -1,38 +1,42 @@
-let input: unknown;
-input = 3;
-input = ['1', '12'];
+function generateError(message: string): never {
+  throw new Error(message);
+}
 
-function run(i: unknown) {
-  if (typeof i === 'number') {
-    i++;
-  } else {
-    i;
+function dumpError(): never {
+  while (true) {}
+}
+
+function rec(): never {
+  return rec();
+}
+
+type paymentAction = 'refaund' | 'checkout'; // 'reject'
+
+function processaction(action: paymentAction) {
+  switch (action) {
+    case 'refaund':
+      //some process
+      break;
+    case 'checkout':
+      // some process
+      break;
+    // case 'reject':
+    //   // some process
+    //   break;
+    default: // способ выловить ошибку, если добавят 'reject'
+      const _: never = action;
+      throw new Error('Нет такого action');
   }
 }
 
-run(input);
+// ---------------------
 
-//--------------------
-
-async function getData() {
-  try {
-    await fetch('');
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message);
-    }
+// Исчерповающая проверка
+function isString(x: string | number): boolean {
+  if (typeof x === 'string') {
+    return true;
+  } else if (typeof x === 'number') {
+    return false;
   }
+  generateError('x не string или number');
 }
-
-async function getDataForce() {
-  try {
-    await fetch('');
-  } catch (error) {
-    const e = error as Error;
-    console.log(e.message);
-  }
-}
-
-type u1 = unknown | number; // unknown
-
-type i1 = unknown & string; // string
