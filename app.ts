@@ -1,33 +1,33 @@
-// buisnes entity
-interface IPayment {
-  sun: number;
-  from: number;
-  to: number;
+function logId(id: string | number) {
+  console.log(id);
 }
 
-// esli budet nuzhno dobavit v IPayment mozhno dobavit suda
-interface IPaymentReauest extends IPayment {}
+const a = logId(1);
 
-enum paymentStatus {
-  Sucsess = 'success',
-  Failed = 'failed',
+function multiply(f: number, s?: number) {
+  if (!s) {
+    return f * f;
+  }
 }
 
-interface IDataSucsess extends IPayment {
-  databaseId: number;
-}
+// -----------------------------------
+type voisdFunc = () => void; // function которая возвращает тип void
 
-interface IDataFaield {
-  errorMessage: string;
-  errorCode: number;
-}
+const function_1: voisdFunc = () => {
+  // пустая функция
+};
 
-interface IResponseSucsess {
-  status: paymentStatus.Sucsess;
-  data: IDataSucsess;
-}
+const function_2: voisdFunc = () => {
+  return true;
+};
 
-interface IResponseFailed {
-  status: paymentStatus.Failed;
-  data: IDataFaield;
-}
+const b = function_2();
+
+// -----------------------------------
+const skills = ['dev', 'devOps'];
+
+const user = {
+  s: [''],
+};
+
+skills.forEach((skill) => user.s.push(skill));
