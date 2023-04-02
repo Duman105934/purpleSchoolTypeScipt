@@ -1,33 +1,38 @@
-function logId(id: string | number) {
-  console.log(id);
-}
+let input: unknown;
+input = 3;
+input = ['1', '12'];
 
-const a = logId(1);
-
-function multiply(f: number, s?: number) {
-  if (!s) {
-    return f * f;
+function run(i: unknown) {
+  if (typeof i === 'number') {
+    i++;
+  } else {
+    i;
   }
 }
 
-// -----------------------------------
-type voisdFunc = () => void; // function которая возвращает тип void
+run(input);
 
-const function_1: voisdFunc = () => {
-  // пустая функция
-};
+//--------------------
 
-const function_2: voisdFunc = () => {
-  return true;
-};
+async function getData() {
+  try {
+    await fetch('');
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  }
+}
 
-const b = function_2();
+async function getDataForce() {
+  try {
+    await fetch('');
+  } catch (error) {
+    const e = error as Error;
+    console.log(e.message);
+  }
+}
 
-// -----------------------------------
-const skills = ['dev', 'devOps'];
+type u1 = unknown | number; // unknown
 
-const user = {
-  s: [''],
-};
-
-skills.forEach((skill) => user.s.push(skill));
+type i1 = unknown & string; // string
