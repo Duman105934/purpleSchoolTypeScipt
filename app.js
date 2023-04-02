@@ -1,6 +1,6 @@
 "use strict";
-const user = {
-    name: 'Duman',
-    age: 35,
-};
-// использовать желательно только с простыми типами и union
+var paymentStatus;
+(function (paymentStatus) {
+    paymentStatus["Sucsess"] = "success";
+    paymentStatus["Failed"] = "failed";
+})(paymentStatus || (paymentStatus = {}));

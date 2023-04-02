@@ -1,19 +1,33 @@
-interface User {
-  name: string;
+// buisnes entity
+interface IPayment {
+  sun: number;
+  from: number;
+  to: number;
 }
 
-interface User {
-  age: number;
+// esli budet nuzhno dobavit v IPayment mozhno dobavit suda
+interface IPaymentReauest extends IPayment {}
+
+enum paymentStatus {
+  Sucsess = 'success',
+  Failed = 'failed',
 }
 
-const user: User = {
-  name: 'Duman',
-  age: 35,
-};
+interface IDataSucsess extends IPayment {
+  databaseId: number;
+}
 
-// Польза от интерфейса можно доопредеять и дополнять свойства, но лучше так делать только
-// тогда когда библиотека сторонняя
+interface IDataFaield {
+  errorMessage: string;
+  errorCode: number;
+}
 
-type ID = string | number;
+interface IResponseSucsess {
+  status: paymentStatus.Sucsess;
+  data: IDataSucsess;
+}
 
-// использовать желательно только с простыми типами и union
+interface IResponseFailed {
+  status: paymentStatus.Failed;
+  data: IDataFaield;
+}
