@@ -1,42 +1,27 @@
-function generateError(message: string): never {
-  throw new Error(message);
+// null можно присвоить
+const n0: null = null;
+const n1: any = null;
+
+// null нельзя присвоить
+// const n2: number = null;
+// const n3: string = null;
+// const n4: boolean = null;
+// const n5: undefined = null;
+
+interface User {
+  name: string;
 }
 
-function dumpError(): never {
-  while (true) {}
-}
-
-function rec(): never {
-  return rec();
-}
-
-type paymentAction = 'refaund' | 'checkout'; // 'reject'
-
-function processaction(action: paymentAction) {
-  switch (action) {
-    case 'refaund':
-      //some process
-      break;
-    case 'checkout':
-      // some process
-      break;
-    // case 'reject':
-    //   // some process
-    //   break;
-    default: // способ выловить ошибку, если добавят 'reject'
-      const _: never = action;
-      throw new Error('Нет такого action');
+function getUser() {
+  if (Math.random() > 0.5) {
+    return null; // явное присвоение null если в БД действительно нет такого user
+  } else {
+    return {
+      name: 'Вася',
+    } as User;
   }
 }
-
-// ---------------------
-
-// Исчерповающая проверка
-function isString(x: string | number): boolean {
-  if (typeof x === 'string') {
-    return true;
-  } else if (typeof x === 'number') {
-    return false;
-  }
-  generateError('x не string или number');
+const user = getUser();
+if (user) {
+  const n6 = user.name;
 }
