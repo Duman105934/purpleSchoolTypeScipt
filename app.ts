@@ -1,22 +1,12 @@
-interface User {
-  name: string;
-  email: string;
-  login: string;
-}
+class User {
+  userName: string;
 
-interface Admin {
-  name: string;
-  role: number;
-}
-
-function isAdmin(user: User | Admin): user is Admin {
-  return 'role' in user;
-}
-
-function setRoleZero(user: User | Admin) {
-  if (isAdmin(user)) {
-    user.role = 0;
-  } else {
-    throw new Error('пользователь не Админ');
+  constructor(nameConstuctor: string) {
+    this.userName = nameConstuctor;
   }
 }
+
+const user = new User('Vasya');
+console.log(user);
+user.userName = 'Petya';
+console.log(user);
