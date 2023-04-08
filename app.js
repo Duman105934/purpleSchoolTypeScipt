@@ -1,13 +1,18 @@
 "use strict";
-class User {
-    set setLogin(l) {
-        this._login = 'user-' + l;
+class Logger {
+    log(...args) {
+        console.log(...args);
     }
-    get getLogin() {
-        return 'no_login';
+    error(...args) {
+        // kinut vo vneshnuu sistemu
+        console.log(...args);
     }
 }
-const user = new User();
-user.setLogin = 'my_login';
-console.log(user);
-console.log(user.getLogin);
+class User {
+    delete() {
+        throw new Error('Method not implemented.');
+    }
+    pay(paymentId) {
+        ///
+    }
+}

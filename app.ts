@@ -1,22 +1,32 @@
-class User {
-  _login: string;
-  password: string;
-  createdAt: Date;
+interface ILogger {
+  log(...args: any): void;
+  error(...args: any): void;
+}
 
-  set login(l: string | number) {
-    this._login = 'user-' + l;
-    this.createdAt = new Date();
+class Logger implements ILogger {
+  log(...args: any[]): void {
+    console.log(...args);
   }
-
-  // esli ostavit tolko getter class budet tolko reed only
-  get login() {
-    //return 'no_login';
-    // 2 var
-    return this._login;
+  error(...args: any[]): void {
+    // kinut vo vneshnuu sistemu
+    console.log(...args);
   }
 }
 
-const user = new User();
-user.login = 'my_login'; // cto to peredaem setter
-console.log(user);
-console.log(user.login); // prosto obrashaemsya getter
+interface IDeletable {
+  delete(): void;
+}
+
+interface IPayable {
+  pay(paymentId: number): void;
+  price?: number;
+}
+
+class User implements IPayable, IDeletable {
+  delete(): void {
+    throw new Error('Method not implemented.');
+  }
+  pay(paymentId: number | string): void {
+    ///
+  }
+}
