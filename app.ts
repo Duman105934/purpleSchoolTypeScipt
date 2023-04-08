@@ -1,14 +1,3 @@
-// обычные переменные
-let a = 5;
-let b: string = a.toString();
-let e: string = new String(a).valueOf();
-let f: boolean = new Boolean(a).valueOf();
-
-let c = '123';
-let d: number = parseInt(c);
-
-// объектные переменные
-
 interface User {
   name: string;
   email: string;
@@ -20,24 +9,51 @@ const user: User = {
   email: 'vasily@yandex.ru',
   login: 'Vasia',
 };
-// 2 variant: as User
-// 3 variant: <User> - ne zhelatelno tak kak est peresechenie s JSX
 
 interface Admin {
   name: string;
   role: number;
 }
 
-// prisvoenie cherez spred operator
-const admin: Admin = {
-  ...user,
-  role: 1,
-};
+function logId(id: string | number) {
+  if (typeof id === 'string') {
+    console.log(id); // string
+  } else {
+    console.log(id); // number
+  }
+  //id; // opyat string | number (flow typov)
+}
 
-// zhelatelny sposob preobrazovaniya cherez function
-function userToAdmin(user: User): Admin {
-  return {
-    name: user.name,
-    role: 1,
-  };
+// prostaya forma napisanya funccii type guard
+function isString(x: string | number): x is string {
+  return typeof x === 'string';
+}
+
+// vmesto typeof id === 'string'
+function logId_2(id: string | number) {
+  if (isString(id)) {
+    console.log(id); // string
+  } else {
+    console.log(id); // number
+  }
+}
+
+// bolee slozhny variant ispolzovanya type guard
+
+// sperva functiya type guard
+function isAdmin(user: User | Admin): user is Admin {
+  return 'role' in user;
+}
+
+function setRoleZero(user: User | Admin) {
+  if (isAdmin(user)) {
+    user.role = 0;
+  } else {
+    throw new Error('пользователь не Админ');
+  }
+}
+
+// vtoroi variant napisaniya isAdmin
+function isAdminAlternative(user: User | Admin): user is Admin {
+  return (user as Admin).role !== undefined; // cherez prinuditelnoe castovanie
 }
