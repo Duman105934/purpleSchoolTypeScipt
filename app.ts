@@ -1,24 +1,36 @@
-class User {
-  userName: string;
-  age: number;
+enum PaymentStatus {
+  Holded,
+  Processed,
+  Reversed,
+}
 
-  constructor();
-  constructor(name: string);
-  constructor(age: number);
-  constructor(name: string, age: number);
-  constructor(ageOrName?: string | number, age?: number) {
-    if (typeof ageOrName === 'string') {
-      this.userName = ageOrName;
-    } else if (typeof ageOrName === 'number') {
-      this.age = ageOrName;
+class PaymentCls {
+  id: number;
+  status: PaymentStatus = PaymentStatus.Holded;
+  createdAt: Date = new Date();
+  updatedAt: Date;
+
+  constructor(id: number) {
+    this.id = id;
+    //this.createdAt = new Date();
+    //this.status = PaymentStatus.Holded;
+  }
+
+  getPaymentLifeTime(): number {
+    return new Date().getTime() - this.createdAt.getTime();
+  }
+
+  unHoldPayment(): void {
+    if (this.status === PaymentStatus.Processed) {
+      throw new Error('Platezh ne mozhet byt vozvrashen');
     }
-    if (typeof age === 'number') {
-      this.age = age;
-    }
+    this.status = PaymentStatus.Reversed;
+    this.updatedAt = new Date();
   }
 }
 
-const user_1 = new User('Vasya');
-const user_2 = new User();
-const user_3 = new User(33);
-const user_4 = new User('Vasya', 33);
+const newPayment = new PaymentCls(1);
+newPayment.unHoldPayment();
+const time = newPayment.getPaymentLifeTime();
+console.log(newPayment);
+//console.log(time);
