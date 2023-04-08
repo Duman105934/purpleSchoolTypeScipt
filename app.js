@@ -1,19 +1,13 @@
 "use strict";
 class User {
-    addSkill(skillOrSkills) {
-        if (typeof skillOrSkills === 'string') {
-            this.skills.push(skillOrSkills);
-        }
-        else {
-            this.skills.concat(skillOrSkills);
-        }
+    set setLogin(l) {
+        this._login = 'user-' + l;
+    }
+    get getLogin() {
+        return 'no_login';
     }
 }
-function run(distance) {
-    if (typeof distance === 'number') {
-        return 1;
-    }
-    else {
-        return 'one';
-    }
-}
+const user = new User();
+user.setLogin = 'my_login';
+console.log(user);
+console.log(user.getLogin);

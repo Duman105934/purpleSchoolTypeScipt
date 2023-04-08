@@ -1,25 +1,22 @@
 class User {
-  skills: string[];
+  _login: string;
+  password: string;
+  createdAt: Date;
 
-  addSkill(skill: string): void;
-  addSkill(skills: string[]): void;
-  addSkill(skillOrSkills: string | string[]): void {
-    if (typeof skillOrSkills === 'string') {
-      this.skills.push(skillOrSkills);
-    } else {
-      this.skills.concat(skillOrSkills);
-    }
+  set login(l: string | number) {
+    this._login = 'user-' + l;
+    this.createdAt = new Date();
+  }
+
+  // esli ostavit tolko getter class budet tolko reed only
+  get login() {
+    //return 'no_login';
+    // 2 var
+    return this._login;
   }
 }
 
-//new User().addSkill();
-
-function run(distance: number): number;
-function run(distance: string): string;
-function run(distance: number | string): number | string {
-  if (typeof distance === 'number') {
-    return 1;
-  } else {
-    return 'one';
-  }
-}
+const user = new User();
+user.login = 'my_login'; // cto to peredaem setter
+console.log(user);
+console.log(user.login); // prosto obrashaemsya getter
