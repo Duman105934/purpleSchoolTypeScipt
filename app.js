@@ -23,3 +23,26 @@ class PersistendPayment extends Payment {
         }
     }
 }
+new PersistendPayment();
+//----------------------
+class User {
+    constructor() {
+        this.name = 'user';
+        console.log(this.name);
+    }
+}
+class Admin extends User {
+    constructor() {
+        super();
+        this.name = 'admin';
+        console.log(this.name);
+    }
+}
+new Admin();
+new Error('');
+class HttpError extends Error {
+    constructor(messege, code) {
+        super(messege);
+        this.code = code !== null && code !== void 0 ? code : 500;
+    }
+}
