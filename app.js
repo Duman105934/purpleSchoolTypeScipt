@@ -1,18 +1,25 @@
 "use strict";
-class Logger {
-    log(...args) {
-        console.log(...args);
+class Payment {
+    constructor(id) {
+        this.status = 'new';
+        this.id = id;
     }
-    error(...args) {
-        // kinut vo vneshnuu sistemu
-        console.log(...args);
+    pay() {
+        this.status = 'paid';
     }
 }
-class User {
-    delete() {
-        throw new Error('Method not implemented.');
+class PersistendPayment extends Payment {
+    constructor() {
+        const id = Math.random();
+        super(id);
     }
-    pay(paymentId) {
-        ///
+    save() {
+        /// method save on database
+    }
+    pay(date) {
+        super.pay();
+        if (date) {
+            this.paidAt = date;
+        }
     }
 }
