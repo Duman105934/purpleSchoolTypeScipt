@@ -1,27 +1,43 @@
-// null можно присвоить
-const n0: null = null;
-const n1: any = null;
+// обычные переменные
+let a = 5;
+let b: string = a.toString();
+let e: string = new String(a).valueOf();
+let f: boolean = new Boolean(a).valueOf();
 
-// null нельзя присвоить
-// const n2: number = null;
-// const n3: string = null;
-// const n4: boolean = null;
-// const n5: undefined = null;
+let c = '123';
+let d: number = parseInt(c);
+
+// объектные переменные
 
 interface User {
   name: string;
+  email: string;
+  login: string;
 }
 
-function getUser() {
-  if (Math.random() > 0.5) {
-    return null; // явное присвоение null если в БД действительно нет такого user
-  } else {
-    return {
-      name: 'Вася',
-    } as User;
-  }
+const user: User = {
+  name: 'Вася',
+  email: 'vasily@yandex.ru',
+  login: 'Vasia',
+};
+// 2 variant: as User
+// 3 variant: <User> - ne zhelatelno tak kak est peresechenie s JSX
+
+interface Admin {
+  name: string;
+  role: number;
 }
-const user = getUser();
-if (user) {
-  const n6 = user.name;
+
+// prisvoenie cherez spred operator
+const admin: Admin = {
+  ...user,
+  role: 1,
+};
+
+// zhelatelny sposob preobrazovaniya cherez function
+function userToAdmin(user: User): Admin {
+  return {
+    name: user.name,
+    role: 1,
+  };
 }
